@@ -1,12 +1,17 @@
 ﻿@page "/"
 @using Npgsql;
+@inject string ConnectionString
 
 <body>
 
 </body>
 
 @code {
+  protected override async Task OnInitializedAsync()
+  {
+    using (var connection = new NpgsqlConnection(ConnectionString))
+    {
 
-
-
+    }
+  }
 }
