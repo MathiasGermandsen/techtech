@@ -1,17 +1,82 @@
 ﻿@page "/"
 @using Npgsql;
+@using System.Net.Mail;
 @inject string ConnectionString
 
-<body>
+<select @bind="selectedRole">
+  @foreach (var role in roles)
+  {
+    <option value="@role">@role</option>
+  }
+</select>
 
-</body>
+<button @onclick="SendEmails">Send Emails</button>
 
 @code {
+  string selectedRole;
+  List<string> roles = new List<string>();
+
   protected override async Task OnInitializedAsync()
+  {
+    await LoadRoles();
+  }
+
+  private async Task LoadRoles()
   {
     using (var connection = new NpgsqlConnection(ConnectionString))
     {
+      await connection.OpenAsync();
 
+      using (var command = new NpgsqlCommand("SELECT DISTINCT role FROM users", connection))
+      {
+        using (var reader = await command.ExecuteReaderAsync())
+        {
+          while (await reader.ReadAsync())
+          {
+            roles.Add(reader.GetString(0));
+          }
+        }
+      }
+    }
+  }
+
+  private async Task SendEmails()
+  {
+    using (var connection = new NpgsqlConnection(ConnectionString))
+    {
+      await connection.OpenAsync();
+
+      using (var command = new NpgsqlCommand("SELECT email FROM users WHERE role = @role", connection))
+      {
+        command.Parameters.AddWithValue("role", selectedRole);
+
+        using (var reader = await command.ExecuteReaderAsync())
+        {
+          while (await reader.ReadAsync())
+          {
+            var email = reader.GetString(0);
+            await SendEmail(email);
+          }
+        }
+      }
+    }
+  }
+
+  private async Task SendEmail(string email)
+  {
+    var info = await System.Text.Json.JsonSerializer.DeserializeAsync<Dictionary<string, string>>(
+    new FileStream("info.json", FileMode.Open, FileAccess.Read));
+
+    var mailMessage = new MailMessage(info["Email"], email)
+      {
+        Subject = "The subject of your email",
+        Body = "The body of your email"
+      };
+
+    using (var smtpClient = new SmtpClient("smtp.example.com"))
+    {
+      smtpClient.Credentials = new System.Net.NetworkCredential(info["Email"], info["Password"]);
+      await smtpClient.SendMailAsync(mailMessage);
     }
   }
 }
