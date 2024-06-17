@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bY/4kQ9MdRjm2yU1Kfc9YxMc0U5LVZcwfJeeKXkYE4M=",
+  "Hash": "LuHe8cM4NOUTDUi8RzJQRfvGlC/UFEjcT6UfhMiFM7c=",
   "Source": "techtech",
   "BasePath": "_content/techtech",
   "Mode": "Default",
@@ -300,6 +300,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.png"
+    },
+    {
+      "Identity": "/Users/mathias.germandsen/Desktop/techtech/techtech/wwwroot/info.json",
+      "SourceId": "techtech",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mathias.germandsen/Desktop/techtech/techtech/wwwroot/",
+      "BasePath": "_content/techtech",
+      "RelativePath": "info.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/info.json"
+    },
+    {
+      "Identity": "/Users/mathias.germandsen/Desktop/techtech/techtech/wwwroot/sql.json",
+      "SourceId": "techtech",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mathias.germandsen/Desktop/techtech/techtech/wwwroot/",
+      "BasePath": "_content/techtech",
+      "RelativePath": "sql.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/sql.json"
     }
   ]
 }

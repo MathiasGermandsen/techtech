@@ -57,6 +57,14 @@
       "PackagePath": "staticwebassets/favicon.png"
     },
     {
+      "Id": "/Users/mathias.germandsen/Desktop/techtech/techtech/wwwroot/info.json",
+      "PackagePath": "staticwebassets/info.json"
+    },
+    {
+      "Id": "/Users/mathias.germandsen/Desktop/techtech/techtech/wwwroot/sql.json",
+      "PackagePath": "staticwebassets/sql.json"
+    },
+    {
       "Id": "obj/Debug/net7.0/staticwebassets/msbuild.build.techtech.props",
       "PackagePath": "build\\techtech.props"
     },
